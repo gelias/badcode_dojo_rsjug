@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Soma os nomes
- * @author fulano
+ * Relatório de pessoas
+ * @author Deus
  */
-public class somaNomes_Original {
+public class report_de_pessoas {
 	/**
 	 * a string para somar todos os nomes na lista 
 	 */
@@ -16,9 +16,17 @@ public class somaNomes_Original {
 	 * imprime a lista de pessoas
 	 * @param paramL
 	 */
-	public static void print(Vector paramL){
+	public static void print_e_vai(Vector paramL){
+		
 		for (int i = 0; i < paramL.size(); i++) {
+			
 			Pessoa p = (Pessoa) paramL.get(i);
+			ValidationHaduken validador = new ValidationHaduken();
+			List<String> erro = validador.validaPessoa(p);
+			
+			if(!erro.isEmpty())
+				continue;
+			
 		    _s += ", " + p.name;			
 		}
 		//remove first comma
@@ -27,29 +35,21 @@ public class somaNomes_Original {
 	}
 	
 	/**
-	 * c�digo principal
+	 * codigo principal
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Vector v = new Vector();
 		
 		Pessoa p = new Pessoa();
-		p.name = "Daniel";
+		p.name = "Guilherme";
+		p.cpf = "0023334467";
+		ArrayList<String> danielTelefonesFixos = new ArrayList<String>();
+		danielTelefonesFixos.add("8765343");
+		p.telefonesCelulares = danielTelefonesFixos;
 		v.add(p);
 		
-		p = new Pessoa();
-		p.name = "Guilherme";
-		v.add(p);
-
-		p = new Pessoa();
-		p.name = "Gabriel";
-		v.add(p);
-
-		p = new Pessoa();
-		p.name = "Frederico";
-		v.add(p);
-
-		print(v);
+		print_e_vai(v);
 		
 	}
 

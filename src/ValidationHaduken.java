@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Haduken {
+public class ValidationHaduken {
 
 	protected List<String> validaPessoa(Pessoa pessoa) {
+		
 		List<String> constraints = new ArrayList<String>();
 		if (pessoa != null) {
 			if (pessoa.cpf != null) {
@@ -11,13 +12,16 @@ public class Haduken {
 					if (pessoa.telefonesFixos != null) {
 						for (String telefone : pessoa.telefonesFixos) {
 							if (telefone != null) {
-								boolean telefoneEValido = telefoneEValido(telefone);
-								if (!telefoneEValido) {
+								if (telefone.isEmpty()) {
 									constraints.add("Erro - Telefone inválido");
 									return constraints;
 								} else {
-									return constraints;
+									if(telefone.length() < 7){
+										constraints.add("Erro - Telefone inválido");
+										return constraints;
+									}
 								}
+								
 							} else {
 								constraints.add("Erro - Telefone não preenchido");
 								return constraints;
@@ -30,13 +34,4 @@ public class Haduken {
 
 		return constraints;
 	}
-
-	private boolean telefoneEValido(String telefone) {
-		if (telefone.isEmpty()) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
 }
