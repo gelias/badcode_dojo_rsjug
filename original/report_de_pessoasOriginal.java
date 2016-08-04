@@ -6,7 +6,7 @@ import java.util.Vector;
  * Relatório de pessoas
  * @author Deus
  */
-public class report_de_pessoas {
+public class report_de_pessoasOriginal {
 	/**
 	 * a string para somar todos os nomes na lista 
 	 */
@@ -21,7 +21,7 @@ public class report_de_pessoas {
 		for (int i = 0; i < paramL.size(); i++) {
 			
 			Pessoa p = (Pessoa) paramL.get(i);
-			ValidationHaduken validador = new ValidationHaduken();
+			ValidationHadukenOriginal validador = new ValidationHadukenOriginal();
 			List<String> erro = validador.validaPessoa(p);
 			
 			if(!erro.isEmpty())
